@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edu.bit</groupId>
@@ -7,7 +8,9 @@
 	<name>spring_security1</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
-<properties>
+	
+	<!-- 반드시 스프링 버전보다 시큐리티 버전이 더 낮아야 함! -->
+	<properties>
 		<java-version>1.8</java-version>
 		<org.springframework-version>5.0.7.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
@@ -23,7 +26,7 @@
 	</repositories>
 
 	<dependencies>
-		
+
 		<!-- 오라클 JDBC 드라이버 -->
 		<dependency>
 			<groupId>oracle</groupId>
@@ -32,7 +35,7 @@
 		</dependency>
 
 		<!-- Spring -->
-		<dependency> 
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${org.springframework-version}</version>
@@ -276,7 +279,7 @@
 				<version>1.2.1</version>
 				<configuration>
 					<mainClass>org.test.int1.Main</mainClass>
-				</configuration> 
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
