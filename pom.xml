@@ -5,11 +5,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edu.bit</groupId>
 	<artifactId>ex</artifactId>
-	<name>spring_security1</name>
+	<name>spring_security_1</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
-	
-	<!-- 반드시 스프링 버전보다 시큐리티 버전이 더 낮아야 함! -->
+
 	<properties>
 		<java-version>1.8</java-version>
 		<org.springframework-version>5.0.7.RELEASE</org.springframework-version>
@@ -26,7 +25,6 @@
 	</repositories>
 
 	<dependencies>
-
 		<!-- 오라클 JDBC 드라이버 -->
 		<dependency>
 			<groupId>oracle</groupId>
@@ -243,7 +241,10 @@
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>${org.security-version}</version>
 		</dependency>
+
 	</dependencies>
+
+
 
 	<build>
 		<plugins>
@@ -283,4 +284,4 @@
 			</plugin>
 		</plugins>
 	</build>
-</project>	
+</project>
