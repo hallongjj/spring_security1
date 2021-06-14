@@ -6,39 +6,31 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<http> 
-       <intercept-url pattern="/security/all" access="permitAll" />
-       <!-- 위 all은 컨트롤러를 통해서 전달 -->
-         <intercept-url pattern="/security/member" access="hasRole('ROLE_MEMBER')" />
-         <!-- 위 멤버는 컨트롤러를 통해서 전달해주는게 아니라 누군가 낚아채서 보내준다 : 이거는 바로 spring security가
-	url에대한 권한을 체크를해서 해당 유저한테 뿌리고 있다!  
-	spring security 는 권한과 인증을 다룸	
-	인증: 로그인 / 권한 : 유저에 따라 사용하는 서비스가 다름(ex 클라우드, 모바일 등)-->
-   <intercept-url pattern="/security/admin" access="hasRole('ROLE_ADMIN')" />
-   
-         <!-- 이건 디폴트! 기본 로그인 페이지 그래서 이걸 자기걸로 커스터마이징 하겠다는 것! -->
-      <!-- 로그인 페이지 커스텀 화 -->
-        <form-login login-page="/login/loginForm"
+	<http>
+		<intercept-url pattern="/security/all" access="permitAll" />
+		<intercept-url pattern="/security/member" access="hasRole('ROLE_MEMBER')" />
+		<intercept-url pattern="/security/admin" access="hasRole('ROLE_ADMIN')" />
+		
+		<!-- 로그인 페이지 커스텀 화 -->
+    	<form-login login-page="/login/loginForm"
               default-target-url="/"
               authentication-failure-url="/login/loginForm?error"
               username-parameter="id"
               password-parameter="password" />
+    	<logout logout-url="/logout" logout-success-url="/" />
+		
+		<!-- 403 에러 처리 -->
+  		<access-denied-handler error-page="/security/accessError"/>
+	</http>
 
-        <logout logout-url="/logout" logout-success-url="/" /> 
-         <!-- 아래는 로그인 객체를 불러오는ㄷ것 -->
-        <form-login />
-           <!-- 403 에러 처리 -->
-        <access-denied-handler error-page="/security/accessError"/>
-   </http> 
-   
-   <!-- provider --> 
-   <authentication-manager>
-   <authentication-provider> 
-       <user-service> 
-         <user name="member" password="{noop}member" authorities="ROLE_MEMBER" /> 
-          <user name="admin" password="{noop}admin" authorities="ROLE_MEMBER,ROLE_ADMIN" /> 
-       </user-service> 
-     </authentication-provider>   
-   </authentication-manager>
+	<!-- provider -->
+	<authentication-manager>
+		<authentication-provider>
+			<user-service>
+				<user name="member" password="{noop}member" authorities="ROLE_MEMBER" />
+				<user name="admin" password="{noop}admin" authorities="ROLE_MEMBER,ROLE_ADMIN" />
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
 
 </beans:beans>
